@@ -1,4 +1,4 @@
-package net.ddns.hj2server.jsonparser.controller;
+package net.ddns.hj2server.jsonparser;
 
 
 import org.springframework.stereotype.Controller;

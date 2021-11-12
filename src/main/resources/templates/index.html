@@ -13,7 +13,7 @@
         <div class="col">
             <div>
                 <label for="input">input</label>
-                <textarea id="input" style="resize: none; width: 100%; height:100vh;" onkeydown="getOutput()"></textarea>
+                <textarea id="input" style="resize: none; width: 100%; height:100vh;" oninput="getOutput()"></textarea>
             </div>
         </div>
         <div class="col">
@@ -31,15 +31,15 @@
 <script>
     function getOutput() {
         const input = document.getElementById('input');
-        axios.post('/api/json', {
-            'input':input.value
-        })
-            .then(function(response) {
-                document.getElementById('output').value = response.data;
-            })
-            .catch(function(error) {
-                document.getElementById('output').value = error;
-            });
+        let output = input;
+
+        try {
+            output = JSON.stringify(JSON.parse(input.value), null, 4);
+        } catch (e) {
+            output = e;
+        }
+
+        document.getElementById('output').value = output;
     }
 </script>
 </body>

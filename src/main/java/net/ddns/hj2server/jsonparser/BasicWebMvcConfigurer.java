@@ -1,4 +1,4 @@
-package net.ddns.hj2server.jsonparser.config;
+package net.ddns.hj2server.jsonparser;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
