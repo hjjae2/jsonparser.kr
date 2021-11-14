@@ -61,10 +61,16 @@
 function getOutput() {
     const space = getSpace();
     const input = document.getElementById('input');
-    let output = input.value;
+    const defaultInputValue = '{data:"json"}';
+    let inputValue = input.value;
+    let output = '';
+
+    if(!inputValue) {
+        inputValue = defaultInputValue;
+    }
 
     try {
-        output = JSON5.stringify(JSON5.parse(input.value), null, space);
+        output = JSON5.stringify(JSON5.parse(inputValue), null, space);
     } catch (e) {
         output = e;
     }
@@ -86,6 +92,8 @@ function copyToClipboard() {
 
     document.body.append(textarea);
     navigator.clipboard.writeText(textarea.value);
+
+    textarea.remove();
     UIkit.notification("Copied!", {pos: 'bottom-right', timeout:100, status: 'success'})
 }
 </script>
