@@ -32,11 +32,16 @@
             <textarea id="input" style="resize: none; width: 100%; height:100vh;" oninput="getOutput()" placeholder='{data:"json"}'></textarea>
     </div>
     
-    <div class="uk-margin-top uk-align-center">
+    <div class="uk-width-1-5 uk-margin-top uk-align-center">
         <legend class="uk-legend">Space</legend>
         <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
             <label><input class="uk-radio" type="radio" name="spaces" value="2" onclick="getOutput()"> 2</label>
             <label><input class="uk-radio" type="radio" name="spaces" value="4" onclick="getOutput()" checked> 4</label>
+        </div>
+        <legend class="uk-legend">New Line (\n)</legend>
+        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+            <label><input class="uk-radio" type="radio" name="newlines" value="Y" onclick="getOutput()"> Remove</label>
+            <label><input class="uk-radio" type="radio" name="newlines" value="N" onclick="getOutput()" checked> Not Remove</label>
         </div>
     </div>
 
@@ -69,6 +74,10 @@ function getOutput() {
         inputValue = defaultInputValue;
     }
 
+    if(isRemoveNewLine()) {
+        inputValue = inputValue.replaceAll(/\n/g, ' ');
+    }
+
     try {
         output = JSON5.stringify(JSON5.parse(inputValue), null, space);
     } catch (e) {
@@ -80,6 +89,10 @@ function getOutput() {
 
 function getSpace() {
     return Number(document.querySelector('input[name="spaces"]:checked').value);
+}
+
+function isRemoveNewLine() {
+    return (document.querySelector('input[name="newlines"]:checked').value === 'Y');
 }
 
 function copyToClipboard() {
