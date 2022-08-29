@@ -1,0 +1,52 @@
+<div class="row" style="height: 100%;">
+    
+    <div id="input-div" class="col-12">
+    <div>
+        INPUT
+    </div>
+    <textarea id="input-small" class="mt-1" oninput="getOutputSmall()" placeholder='{data:"json"}'></textarea>
+    </div>
+
+    <div id="output-div" class="col-12 mt-5">
+    <div class="d-flex justify-content-between">
+        OUTPUT
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardSmall()">copy</button>
+    </div>
+    <textarea id="output-small" class="mt-1" readonly>
+{
+    data: 'json',
+}</textarea>
+    </div>
+</div>
+
+<script>
+    function getOutputSmall() {
+        const input = document.getElementById('input-small');
+        const defaultInputValue = '{data:"json"}';
+        let inputValue = input.value;
+        let output = '';
+    
+        if(!inputValue) {
+            inputValue = defaultInputValue;
+        }
+    
+        try {
+            output = JSON5.stringify(JSON5.parse(inputValue), null);
+        } catch (e) {
+            output = e;
+        }
+    
+        document.getElementById('output-small').innerHTML = output;
+    }
+    
+    function copyToClipboardSmall() {
+        const textarea = document.getElementById('output-small');
+    
+        textarea.select();
+        textarea.setSelectionRange(0, 99999);
+    
+        navigator.clipboard.writeText(textarea.value);
+    
+        new bootstrap.Toast(document.getElementById('copyMessage')).show();
+    }
+</script>

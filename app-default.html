@@ -1,0 +1,82 @@
+<div class="row" style="height: 100%;">
+    <div id="input-div" class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+    <div>
+        INPUT
+    </div>
+    <textarea id="input" class="mt-1" oninput="getOutput()" placeholder='{data:"json"}'></textarea>
+    </div>
+
+    <div id="option-div" class="col-2 text-center mt-4">
+    <legend>Space</legend>
+    <div>
+        <input type="radio" class="btn-check" name="spaces" id="spaces2" value="2" autocomplete="off" onclick="getOutput()">
+        <label class="btn btn-outline-secondary" for="spaces2">2</label>
+        <input type="radio" class="btn-check" name="spaces" id="spaces4" value="4" autocomplete="off" onclick="getOutput()" checked>
+        <label class="btn btn-outline-secondary" for="spaces4">4</label>
+    </div>
+    <br>
+    <legend>Remove<br>New Line (\n)</legend>
+    <div>
+        <input type="radio" class="btn-check" name="newlines" id="newlinesY" value="Y" autocomplete="off" onclick="getOutput()">
+        <label class="btn btn-outline-secondary" for="newlinesY">YES</label>
+        <input type="radio" class="btn-check" name="newlines" id="newlinesN" value="N" autocomplete="off" onclick="getOutput()" checked>
+        <label class="btn btn-outline-secondary" for="newlinesN">NO</label>
+    </div>
+    </div>
+
+    <div id="output-div" class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+    <div class="d-flex justify-content-between">
+        OUTPUT
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard()">copy</button>
+    </div>
+    <textarea id="output" class="mt-1" readonly>
+{
+    data: 'json',
+}</textarea>
+    </div>
+</div>
+
+<script>
+    function getOutput() {
+        const space = getSpace();
+        const input = document.getElementById('input');
+        const defaultInputValue = '{data:"json"}';
+        let inputValue = input.value;
+        let output = '';
+    
+        if(!inputValue) {
+            inputValue = defaultInputValue;
+        }
+    
+        if(isRemoveNewLine()) {
+            inputValue = inputValue.replaceAll(/\n/g, ' ');
+        }
+    
+        try {
+            output = JSON5.stringify(JSON5.parse(inputValue), null, space);
+        } catch (e) {
+            output = e;
+        }
+    
+        document.getElementById('output').innerHTML = output;
+    }
+    
+    function getSpace() {
+        return Number(document.querySelector('input[name="spaces"]:checked').value);
+    }
+    
+    function isRemoveNewLine() {
+        return (document.querySelector('input[name="newlines"]:checked').value === 'Y');
+    }
+    
+    function copyToClipboard() {
+        const textarea = document.getElementById('output');
+    
+        textarea.select();
+        textarea.setSelectionRange(0, 99999);
+    
+        navigator.clipboard.writeText(textarea.value);
+    
+        new bootstrap.Toast(document.getElementById('copyMessage')).show();
+    }
+</script>
