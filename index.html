@@ -1,89 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Json Viewer, Prettify Online</title>
+	<meta charset="UTF-8">
+	<title>Json Viewer Online</title>
+	<meta name="title" content="Json Viewer Online">
+	<meta name="keywords" content="json, online, format, formatter, view, viewer, edit, editor, prettify, parser, online tool, json viewer, json viewer online, json prettify, json prettify online, json parser, json parser online, json online, json tool, json tools, json editor, json formatter, json formatter onlien">
+	<meta name="description" content="Json Viewer Online helps to parse, prettify your JSON data. You can adjust space, new line of your JSON data.">
 
-    <meta name="title" content="Json Viewer, Prettify Online">
-    <meta name="keywords" content="json, json viewer, json prettify, json parser, json online, json tool">
-    <meta name="description" content="Json Viewer, Prettify Online helps to parse, prettify your JSON data. You can adjust space, new line of your JSON data.">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="favicon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-
-    <style>
-        html, body { 
-            width: 100%; height: 100%;
-        }
-        textarea { 
-            border-radius: 5px;
-            resize: none; 
-            width:100%;
-            height:100%;
-            outline: none;
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
-        }
-        @media (min-width: 992px) {
-            #app-default {
-                display: block;
-            }
-            #app-small {
-                display: none;
-            }
-        }
-        @media (max-width: 992px) { 
-            #app-default {
-                display: none;
-            }
-            #app-small {
-                display: block;
-            }
-        }
-    </style>
+	<link rel="favicon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="stylesheet" type="text/css" href="css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
-    <!-- #################### Default APP #################### -->
-    <div id="app-default" class="container-fluid p-3" style="height: 95%;">
-    </div>
+	<section class="hero is-fullheight">
+		<!-- Header -->
+		<div class="hero-head" style="background-color: lightgrey">
+			<header class="navbar">
+				<div class="navbar-brand">
+					<div class="navbar-item">
+						<h6 class="title is-6">Json Viewer Online</h6>
+					</div>
+				</div>
+			</header>
+		</div>
 
-    <!-- #################### Small APP #################### -->
-    <div id="app-small" class="container-fluid p-3" style="height: 95%;">
-    </div>
+		<!-- Content -->
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="columns is-desktop">
+					<div class="column">
+						<label class="label">Input</label>
+						<div class="control">
+							<textarea class="textarea has-fixed-size" id="input" placeholder="Input your JSON data here." onkeyup="output()"></textarea>
+						</div>
+					</div>
+					<div class="column">
+						<label class="label">Output</label>
+						<div class="control">
+							<textarea class="textarea has-fixed-size" id="output" placeholder="Output your JSON data here." readonly></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="copyMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body">
-                Copied!
-            </div>
-        </div>
-    </div>
+	<section class="hero is-fullheight">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="columns is-desktop">
+					<div class="column">
+						<h2 class="title is-2">Json Viewer Online</h2>
+					</div>
+				</div>
+				<div class="columns is-desktop">
+					<div class="column">
+						<span class="is-size-5">Json Viewer Online specializes in transforming unorganized JSON data into a readable format, such as
+							JSON stringify. Our user-friendly interface neatly formats and displays JSON data, making it
+							easy for developers to troubleshoot API responses or explore JSON structures. Optimize your
+							data visualization experience by trying it out now – untangle complex JSON and gain a
+							clearer understanding of your data!
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <div
+	<!-- Footer -->
+	<footer class="hero-foot" style="background-color: lightgrey">
+		<div class="content has-text-centered">
+			<p>
+				© 2024 <a href="https://github.com/hjjae2">leehyunjae</a> All rights reserved.
+			</p>
+		</div>
+	</footer>
+	</section>
 
-<script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <!-- Bootstrap5 -->
-<script async src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script> <!-- JSON5 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TBC5WX3Z4H"></script> <!-- Global site tag (gtag.js) - Google Analytics -->
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-TBC5WX3Z4H');
-</script>
-
-<script>
-    $(document).ready(function(){
-    $('#app-default').load("/app-default.html");
-    $('#app-small').load("/app-small.html");
-});
-</script>
+	<!-- Scripts -->
+	<script async src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script> <!-- JSON5 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TBC5WX3Z4H"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<script src="app.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script src="gtag.js"></script>
 </body>
 </html>
