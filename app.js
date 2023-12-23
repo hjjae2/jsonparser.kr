@@ -3,7 +3,12 @@ function output() {
     const input = document.getElementById('input');
     const output = document.getElementById('output');
     let inputValue = input.value;
-    let outputValue = '';
+    let outputValue = null;
+
+    if (!inputValue) {
+        output.value = outputValue
+        return;
+    }
 
     if (isRemoveNewLine()) {
         inputValue = inputValue.replaceAll(/\n/g, ' ');
