@@ -11,70 +11,36 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
 	<link rel="stylesheet" type="text/css" href="css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
 	<section class="hero is-fullheight">
 		<!-- Header -->
 		<div class="hero-head" style="background-color: lightgrey">
 			<header class="navbar">
-				<div class="container">
-					<div class="navbar-brand">
-						<a class="navbar-item">
-							<img src="/images/android-chrome-512x512.png" alt="Logo">
-						</a>
-						<div class="navbar-item">
-							<h4 class="title is-4">Json Viewer Online</h4>
-						</div>
+				<div class="navbar-brand">
+					<div class="navbar-item">
+						<h6 class="title is-6">Json Viewer Online</h6>
 					</div>
 				</div>
 			</header>
 		</div>
 
 		<!-- Content -->
-		<div class="hero-body">
+		<div class="hero-body" style="padding: 0 3rem">
 			<div class="container has-text-centered">
-				<div class="columns">
-					<div class="column is-6">
+				<div class="columns is-desktop">
+					<div class="column">
 						<label class="label">Input</label>
 						<div class="control">
-							<textarea class="textarea has-fixed-size" id="input" placeholder="Input your JSON data here" style="height: 100%"></textarea>
+							<textarea class="textarea has-fixed-size" id="input" placeholder="Input your JSON data here." onkeyup="output()"></textarea>
 						</div>
 					</div>
-					<div class="column is-6">
+					<div class="column">
 						<label class="label">Output</label>
 						<div class="control">
-							<textarea class="textarea has-fixed-size" id="output" placeholder="Output your JSON data here" rows="12" readonly></textarea>
-						</div>
-					</div>
-				</div>
-
-				<div class="columns">
-					<div class="column is-6">
-						<label class="label">Space</label>
-						<div class="control">
-							<label class="radio">
-								<input type="radio" name="space" checked>
-								4
-							</label>
-							<label class="radio">
-								<input type="radio" name="space">
-								2
-							</label>
-						</div>
-					</div>
-					<div class="column is-6">
-						<label class="label">New Line</label>
-						<div class="control">
-							<label class="radio">
-								<input type="radio" name="new-line" checked>
-								No
-							</label>
-							<label class="radio">
-								<input type="radio" name="new-line">
-								Yes
-							</label>
+							<textarea class="textarea has-fixed-size" id="output" placeholder="Output your JSON data here." readonly></textarea>
 						</div>
 					</div>
 				</div>
@@ -94,9 +60,9 @@
 	<!-- Scripts -->
 	<script async src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script> <!-- JSON5 -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TBC5WX3Z4H"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	<script src="app.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script src="gtag.js"></script>
 </body>
 </html>
